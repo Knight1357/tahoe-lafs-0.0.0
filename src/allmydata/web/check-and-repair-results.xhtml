@@ -1,0 +1,23 @@
+<html xmlns:t="http://twistedmatrix.com/ns/twisted.web.template/0.1">
+  <head>
+    <title>Tahoe-LAFS - Check Results</title>
+    <link href="/tahoe.css" rel="stylesheet" type="text/css"/>
+    <link href="/icon.png" rel="shortcut icon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+  <body>
+
+<h1>File Check-And-Repair Results for SI=<span t:render="storage_index" /></h1>
+
+<div t:render="summary" />
+
+<div t:render="repair_results" />
+
+<div t:render="post_repair_results" />
+
+<div t:render="maybe_pre_repair_results" />
+
+<div t:render="return_to" />
+
+  </body>
+</html>

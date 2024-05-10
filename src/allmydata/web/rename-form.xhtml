@@ -1,0 +1,30 @@
+<html xmlns:t="http://twistedmatrix.com/ns/twisted.web.template/0.1">
+  <head>
+    <title t:render="title"></title>
+    <link href="/tahoe.css" rel="stylesheet" type="text/css"/>
+    <link href="/icon.png" rel="shortcut icon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+
+<body>
+
+<h2 t:render="header" />
+
+<div class="freeform-form">
+    <form action="." method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend class="freeform-form-label">Rename child</legend>
+            <input type="hidden" name="t" value="rename" />
+            <input t:render="when_done" />
+
+            Rename child:
+            <input type="text" name="from_name" readonly="true" t:render="get_name" /><br />
+            to name:
+            <input type="text" name="to_name" /><br />
+            <input type="submit" value="rename" />
+        </fieldset>
+    </form>
+
+</div>
+
+</body></html>

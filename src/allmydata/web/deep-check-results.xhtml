@@ -1,0 +1,93 @@
+<html xmlns:t="http://twistedmatrix.com/ns/twisted.web.template/0.1">
+  <head>
+    <title>Tahoe-LAFS - Deep Check Results</title>
+    <link href="/tahoe.css" rel="stylesheet" type="text/css"/>
+    <link href="/icon.png" rel="shortcut icon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta t:render="refresh" />
+  </head>
+  <body>
+
+<h1>Deep-Check Results for root SI=<span t:render="root_storage_index" /></h1>
+
+<h2 t:render="reload" />
+
+<p>Counters:</p>
+<ul>
+  <li>Objects Checked: <span><t:transparent t:render="objects_checked" /></span></li>
+  <li>Objects Healthy: <span><t:transparent t:render="objects_healthy" /></span></li>
+  <li>Objects Unhealthy: <span><t:transparent t:render="objects_unhealthy" /></span></li>
+  <li>Objects Unrecoverable: <span><t:transparent t:render="objects_unrecoverable" /></span></li>
+  <li>Corrupt Shares: <span><t:transparent t:render="count_corrupt_shares" /></span></li>
+</ul>
+
+<div t:render="problems_p">
+<h2>Files/Directories That Had Problems:</h2>
+
+<ul t:render="problems">
+  <li t:render="item">
+    <t:slot name="problem" />
+  </li>
+  <li t:render="empty">None</li>
+</ul>
+</div>
+
+
+<div t:render="servers_with_corrupt_shares_p">
+<h2>Servers on which corrupt shares were found</h2>
+<ul t:render="servers_with_corrupt_shares">
+  <li t:render="item">
+    <t:slot name="problem" />
+  </li>
+  <li t:render="empty">None</li>
+</ul>
+</div>
+
+<div t:render="corrupt_shares_p">
+<h2>Corrupt Shares</h2>
+<p>If repair fails, these shares need to be manually inspected and removed.</p>
+<table t:render="corrupt_shares">
+  <tr t:render="header">
+    <th>Server</th>
+    <th>Server Nickname</th>
+    <th>Storage Index</th>
+    <th>Share Number</th>
+  </tr>
+  <tr t:render="item">
+    <td><t:slot name="serverid"/></td>
+    <td><t:slot name="nickname"/></td>
+    <td><t:slot name="si"/></td>
+    <td><t:slot name="shnum"/></td>
+  </tr>
+</table>
+</div>
+
+<div t:render="return_to" />
+
+<div>
+<h2>All Results</h2>
+<table t:render="all_objects">
+  <tr t:render="header">
+    <th>Relative Path</th>
+    <th>Healthy</th>
+    <th>Recoverable</th>
+    <th>Storage Index</th>
+    <th>Summary</th>
+  </tr>
+  <tr t:render="item">
+    <td><t:slot name="path"/></td>
+    <td><t:slot name="healthy"/></td>
+    <td><t:slot name="recoverable"/></td>
+    <td><tt><t:slot name="storage_index"/></tt></td>
+    <td><t:slot name="summary"/></td>
+  </tr>
+  <tr t:render="empty">
+    <td>Nothing to report yet.</td>
+  </tr>
+</table>
+</div>
+
+<div t:render="runtime" />
+
+  </body>
+</html>

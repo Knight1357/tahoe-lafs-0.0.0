@@ -1,0 +1,61 @@
+<html xmlns:t="http://twistedmatrix.com/ns/twisted.web.template/0.1">
+  <head>
+    <title>Tahoe-LAFS - File Upload Status</title>
+    <link href="/tahoe.css" rel="stylesheet" type="text/css"/>
+    <link href="/icon.png" rel="shortcut icon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+  <body>
+
+<h1>File Upload Status</h1>
+
+<ul>
+  <li>Started: <t:transparent t:render="started"/></li>
+  <li>Storage Index: <t:transparent t:render="si"/></li>
+  <li>Helper?: <t:transparent t:render="helper"/></li>
+  <li>Total Size: <t:transparent t:render="total_size"/></li>
+  <li>Progress (Hash): <t:transparent t:render="progress_hash"/></li>
+  <li>Progress (Ciphertext): <t:transparent t:render="progress_ciphertext"/></li>
+  <li>Progress (Encode+Push): <t:transparent t:render="progress_encode_push"/></li>
+  <li>Status: <t:transparent t:render="status"/></li>
+</ul>
+
+<div t:render="results">
+  <h2>Upload Results</h2>
+  <ul>
+    <li>Shares Pushed: <t:transparent t:render="pushed_shares" /></li>
+    <li>Shares Already Present: <t:transparent t:render="preexisting_shares" /></li>
+    <li>Sharemap: <t:transparent t:render="sharemap" /></li>
+    <li>Servermap: <t:transparent t:render="servermap" /></li>
+    <li>Timings:</li>
+    <ul>
+      <li>File Size: <t:transparent t:render="file_size" /> bytes</li>
+      <li>Total: <t:transparent t:render="time_total" />
+      (<t:transparent t:render="rate_total" />)</li>
+      <ul>
+        <li>Storage Index: <t:transparent t:render="time_storage_index" />
+        (<t:transparent t:render="rate_storage_index" />)</li>
+        <li>[Contacting Helper]: <t:transparent t:render="time_contacting_helper" /></li>
+        <li>[Upload Ciphertext To Helper]: <t:transparent t:render="time_cumulative_fetch" />
+        (<t:transparent t:render="rate_ciphertext_fetch" />)</li>
+
+        <li>Peer Selection: <t:transparent t:render="time_peer_selection" /></li>
+        <li>Encode And Push: <t:transparent t:render="time_total_encode_and_push" />
+        (<t:transparent t:render="rate_encode_and_push" />)</li>
+        <ul>
+          <li>Cumulative Encoding: <t:transparent t:render="time_cumulative_encoding" />
+          (<t:transparent t:render="rate_encode" />)</li>
+          <li>Cumulative Pushing: <t:transparent t:render="time_cumulative_sending" />
+          (<t:transparent t:render="rate_push" />)</li>
+          <li>Send Hashes And Close: <t:transparent t:render="time_hashes_and_close" /></li>
+        </ul>
+        <li>[Helper Total]: <t:transparent t:render="time_helper_total" /></li>
+      </ul>
+    </ul>
+  </ul>
+</div>
+
+<div>Return to the <a href="/">Welcome Page</a></div>
+
+  </body>
+</html>

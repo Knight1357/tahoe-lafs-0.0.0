@@ -1,0 +1,27 @@
+<html xmlns:t="http://twistedmatrix.com/ns/twisted.web.template/0.1">
+  <head>
+    <title>Tahoe-LAFS - Operational Statistics</title>
+    <link href="/tahoe.css" rel="stylesheet" type="text/css"/>
+    <link href="/icon.png" rel="shortcut icon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+  <body>
+
+<h1>Operational Statistics</h1>
+
+<h2>General</h2>
+
+    <ul>
+      <li>Files Uploaded (immutable): <t:transparent t:render="uploads" /></li>
+      <li>Files Downloaded (immutable): <t:transparent t:render="downloads" /></li>
+      <li>Files Published (mutable): <t:transparent t:render="publishes" /></li>
+      <li>Files Retrieved (mutable): <t:transparent t:render="retrieves" /></li>
+    </ul>
+
+<h2>Raw Stats:</h2>
+<pre t:render="raw" />
+
+<div>Return to the <a href="/">Welcome Page</a></div>
+
+  </body>
+</html>

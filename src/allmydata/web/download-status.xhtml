@@ -1,0 +1,62 @@
+<html xmlns:t="http://twistedmatrix.com/ns/twisted.web.template/0.1">
+
+  <head>
+    <title>Tahoe-LAFS - File Download Status</title>
+    <link href="/tahoe.css" rel="stylesheet" type="text/css"/>
+    <link href="/icon.png" rel="shortcut icon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+
+  <body>
+
+    <h1>File Download Status</h1>
+
+    <ul>
+      <li>Started: <t:transparent t:render="started"/></li>
+      <li>Storage Index: <t:transparent t:render="si"/></li>
+      <li>Helper?: <t:transparent t:render="helper"/></li>
+      <li>Total Size: <t:transparent t:render="total_size"/></li>
+      <li>Progress: <t:transparent t:render="progress"/></li>
+      <li>Status: <t:transparent t:render="status"/></li>
+    </ul>
+
+    <div t:render="events"></div>
+
+    <div t:render="results">
+
+      <h2>Download Results</h2>
+
+      <ul>
+        <li t:render="servers_used" />
+        <li>Servermap: <t:transparent t:render="servermap" /></li>
+        <li t:render="problems" />
+        <li>Timings:</li>
+        <ul>
+          <li>File Size: <t:transparent t:render="file_size" /> bytes</li>
+          <li>Total: <t:transparent t:render="time_total" />
+            (<t:transparent t:render="rate_total" />)</li>
+          <ul>
+            <li>Peer Selection: <t:transparent t:render="time_peer_selection" /></li>
+            <li>UEB Fetch: <t:transparent t:render="time_uri_extension" /></li>
+            <li>Hashtree Fetch: <t:transparent t:render="time_hashtrees" /></li>
+            <li>Segment Fetch: <t:transparent t:render="time_segments" />
+              (<t:transparent t:render="rate_segments" />)</li>
+            <ul>
+              <li>Cumulative Fetching: <t:transparent t:render="time_cumulative_fetch" />
+                (<t:transparent t:render="rate_fetch" />)</li>
+              <li>Cumulative Decoding: <t:transparent t:render="time_cumulative_decode" />
+                (<t:transparent t:render="rate_decode" />)</li>
+              <li>Cumulative Decrypting: <t:transparent t:render="time_cumulative_decrypt" />
+                (<t:transparent t:render="rate_decrypt" />)</li>
+            </ul>
+            <li>Paused by client: <t:transparent t:render="time_paused" /></li>
+          </ul>
+          <li t:render="server_timings" />
+        </ul>
+      </ul>
+    </div>
+
+    <div>Return to the <a href="/">Welcome Page</a></div>
+
+  </body>
+</html>
